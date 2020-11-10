@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>写文章</title>
+    <% include head%>
+</head>
+
+<body>
+    <form action="/artile/write" method="post">
+        <div class="form-group">
+            <input type="hidden" name="id" value="<%-item.id%>">
+            <input type="hidden" name="page" value="<%-item.page%>">
+            <input type="text" class="form-control" name="title" value="<%=item.title%>" placeholder="请输入文章标题">
+            <textarea name="content" id="editor"><%-item.content%></textarea>
+        </div>
+        <%if(item.id){%>
+        <button type="submit" class="btn btn-primary">修改</button>
+        <%}else{%>
+        <button type="submit" class="btn btn-primary">发布</button>
+        <%}%>
+    </form>
+    <div>
+
+        <script>
+            ClassicEditor.create(document.querySelector('#editor'), {
+                ckfinder: {
+                    uploadUrl: "/artile/upload"
+                }
+            }).catch(error => {
+                console.error(error);
+            }); </script>
+    </div>
+
+
+</body>
+
+</html>

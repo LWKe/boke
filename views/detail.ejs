@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>详情</title>
+    <% include head%>
+</head>
+
+<body>
+    <div class="container">
+        <h1><%=data.title%></h1>
+        <p>作者：<%=username%></p>
+        <p> 发布时间：<%=data.time%></p>
+        <%-data.content%>
+    </div>
+</body>
+
+</html>

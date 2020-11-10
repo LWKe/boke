@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>首页</title>
+  <% include head%>
+</head>
+
+<body>
+  <nav class="navbar navbgc">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">首页</a>
+    </div>
+
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"> <%=username%></a></li>
+        <li><a href="/write">写文章</a></li>
+        <li><a href="/logout">退出</a></li>
+      </ul>
+    </div>
+
+  </nav>
+  <% data.list.map(function(item,index){%>
+  <div class="table-responsive">
+    <table class="table">
+      <tr>
+        <td class="active"><%=index+1%></td>
+        <td class="success"><%=item.username%></td>
+        <td class="warning"><a href="/detail?id=<%=item.id%>"> <%=item.title%></a></td>
+        <td class="danger"><%=item.time%></td>
+        <td class="info"><a href="/write?id=<%=item.id%>&page=<%=data.currentPage%>">编辑</a></td>
+        <td class="info"><a href="/artile/delete?id=<%=item.id%>&page=<%=data.currentPage%>">删除</a> </td>
+      </tr>
+    </table>
+  </div>
+  <%})%>
+  <nav aria-label="12">
+    <ul class="pagination pagination-sm">
+      <% for(let i=0;i<data.totle;i++){%>
+      <li><a href="/?page=<%=i+1%>"><%=i+1%></a></li>
+      <%}%>
+    </ul>
+
+  </nav>
+</body>
+
+</html>
